@@ -52,7 +52,7 @@ namespace PLL
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
-            MessageBox.Show("Success");
+            MessageBox.Show("Success Brother");
             var md = new Login();
             md.Show();
             this.Hide();
