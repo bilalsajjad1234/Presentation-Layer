@@ -467,5 +467,115 @@ namespace DBL
 
 
         }
+
+
+        public bool checkingPin(int pin)
+        {
+            string query = $"select count(*) from pins where pin = @pin";
+            using(SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using(SqlCommand command = new SqlCommand(query,connection))
+                {
+                    command.Parameters.AddWithValue("@pin", pin);
+                    int count = (int)command.ExecuteScalar();
+                    return count > 0;
+                }
+            }
+        }
+
+
+
+
+        //deleting customer in booked room
+
+
+        public bool deleteCustomer(string name)
+        {
+            string q = $"delete from bookedroom where namee = @name";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using(SqlCommand cmd = new SqlCommand(q,connection))
+                {
+                    cmd.Parameters.AddWithValue("name",name);
+                    int rowsAff = cmd.ExecuteNonQuery();
+                    return rowsAff > 0; 
+
+                }
+            }
+        }
+
+
+
+        ///fooods daldo thory see
+        ///
+
+
+        public bool addFood(int id,string name,int price)
+        {
+            string q = $"insert into hotelfoods(id,namee,price) VALUES (@id, @name, @price)";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(q,connection))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@price", price);
+                    int rowsAff = cmd.ExecuteNonQuery();
+                    return rowsAff > 0;
+
+                }
+            }
+        }
+
+
+
+        ///food delete krwao
+        public bool deleteFood(int id)
+        {
+            string q = $"delete from hotelfoods where id = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(q, connection))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    int rowsAff = cmd.ExecuteNonQuery();
+                    return rowsAff > 0;
+
+                }
+            }
+        }
+
+
+        //updating food now
+
+
+        public bool updateFood(int id,int price)
+        {
+            string q = $"update hotelfoods set price = @price where id= @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(q, connection))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@price", price);
+                    int rowsAff = cmd.ExecuteNonQuery();
+                    return rowsAff > 0;
+
+                }
+            }
+        }
+
+
+
+
     }
+
 }

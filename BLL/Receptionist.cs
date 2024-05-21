@@ -136,5 +136,48 @@ namespace BLL
 
 
 
+        public bool delCus(string name)
+        {
+            return db.deleteCustomer(name);
+        }
+
+
+
+
+
+        public bool addFood(int id,string name,int price)
+        {
+            return db.addFood(id, name, price);
+        }
+
+
+
+
+        public bool delFood(int id)
+        {
+            return db.deleteFood(id);
+        }
+
+
+
+        public bool updateFood(int id,int price)
+        {
+            return db.updateFood(id,price);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

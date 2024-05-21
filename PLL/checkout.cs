@@ -42,11 +42,22 @@ namespace PLL
 
         private void button1_Click(object sender, EventArgs e)
         {
+            timer1.Start();
             int days = int.Parse(textBox4.Text.ToString());
 
             int price = int.Parse(textBox3.Text.ToString());
             int total = (days * price) + int.Parse(textBox5.Text);
             textBox6.Text = total.ToString();
+
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            var nf = new payment();
+            nf.Show();
+            this.Hide();
         }
     }
 }

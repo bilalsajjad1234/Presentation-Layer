@@ -21,6 +21,14 @@ namespace BLL
             return db.insertUser(id, name, username, password, contact);
 
         }
+
+
+        public bool getPin(int pin)
+        {
+            return db.checkingPin(pin);
+        }
+
+        
     }
 
     public static class user

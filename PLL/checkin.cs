@@ -71,6 +71,8 @@ namespace PLL
             {
                 MessageBox.Show("data added successfully");
                 button2.Enabled = false;
+                textBox2.Text = "";
+                comboBox1.SelectedItem = -1;
             }
             else
             {

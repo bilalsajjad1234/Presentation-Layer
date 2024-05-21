@@ -19,7 +19,7 @@ namespace PLL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new loader());
+            Application.Run(new Login());
         }
     }
 }

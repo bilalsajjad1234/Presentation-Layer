@@ -32,6 +32,9 @@ namespace PLL
             if(whoIs == "Customer")
             {
                 button1.Enabled = false;
+                button7.Enabled = false;
+                button8.Enabled = false;
+                button9.Enabled = false;
             }
             else if (whoIs == "Manager")
             {
@@ -93,6 +96,31 @@ namespace PLL
             nf.Show();
             this.Hide();
             user.Username = "";
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void Modules_Load(object sender, EventArgs e)
+        {
+
+            loadForm(new greet());
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            loadForm(new addfood());
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            loadForm(new updatefood());
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            loadForm(new deletefood());
         }
     }
 }
