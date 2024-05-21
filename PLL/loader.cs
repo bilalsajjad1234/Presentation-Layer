@@ -32,7 +32,7 @@ namespace PLL
             else
             {
                 timer1.Stop();
-                var nf = new Login();
+                var nf = new UserForm();
                 nf.Show();
                 this.Hide();
 

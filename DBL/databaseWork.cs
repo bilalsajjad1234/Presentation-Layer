@@ -14,6 +14,60 @@ namespace DBL
         public SqlConnection connection;
         public string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
+
+
+        public bool Connect(string ipAddress, string username, string password)
+        {
+            string connectionString = $"Server={ipAddress};User ID={username};Password={password};";
+
+            try
+            {
+                connection = new SqlConnection(connectionString);
+                connection.Open();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception appropriately
+                Console.WriteLine($"Error: {ex.Message}");
+                return false;
+            }
+
+        }
+
+
+
+        public List<string> GetDatabaseList(string ipAddress, string username, string password)
+        {
+            List<string> databases = new List<string>();
+
+
+            using (SqlConnection connection = new SqlConnection($"Server={ipAddress};User ID={username};Password={password};"))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        command.CommandText = "SELECT name FROM sys.databases WHERE name NOT IN ('master', 'tempdb', 'model', 'msdb')";
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                databases.Add(reader.GetString(0));
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
+
+            return databases;
+        }
         public bool customerExistence(string username, string password)
         {
 
@@ -571,6 +625,40 @@ namespace DBL
 
                 }
             }
+        }
+
+
+        public bool passUsernameForPassword(string name)
+        {
+            string q = $"select count(*) from customers where username = @name";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(q,connection))
+                {
+                    command.Parameters.AddWithValue("@name", name);
+                    int rowCount = (int)command.ExecuteScalar();
+                    return rowCount > 0;
+                }
+            }
+        }
+
+
+        public bool updatePassword(string name,string pass)
+        {
+            string q = "UPDATE customers SET password = @pass WHERE username = @name";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(q, connection))
+                {
+                    command.Parameters.AddWithValue("@name", name);
+                    command.Parameters.AddWithValue("@pass", pass);
+                    int rowAff = command.ExecuteNonQuery();
+                    return rowAff > 0;
+                }
+            }
+
         }
 
 

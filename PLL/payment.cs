@@ -36,7 +36,7 @@ namespace PLL
                 if(delete)
                 {
                     user.Username = "";
-                    var nf = new Login();
+                    var nf = new UserForm();
                     nf.Show();
                     this.Hide();
                 }

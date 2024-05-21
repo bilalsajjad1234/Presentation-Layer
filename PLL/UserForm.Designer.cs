@@ -1,7 +1,7 @@
 ﻿
 namespace PLL
 {
-    partial class Login
+    partial class UserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,7 @@ namespace PLL
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -46,9 +47,9 @@ namespace PLL
             this.label1.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(79, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(641, 36);
+            this.label1.Size = new System.Drawing.Size(668, 36);
             this.label1.TabIndex = 0;
-            this.label1.Text = "WAIT HAVE YOU EVER VISITED US BEFORE?";
+            this.label1.Text = "WAITT! HAVE YOU EVER VISITED US BEFORE?";
             // 
             // label2
             // 
@@ -102,11 +103,24 @@ namespace PLL
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Login
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DarkRed;
+            this.label4.Location = new System.Drawing.Point(265, 248);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 20);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Forgot Pass?";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(808, 443);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
@@ -114,7 +128,7 @@ namespace PLL
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Login";
+            this.Name = "UserForm";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
@@ -131,5 +145,6 @@ namespace PLL
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label4;
     }
 }

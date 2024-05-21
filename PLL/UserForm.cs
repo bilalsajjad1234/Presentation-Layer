@@ -11,12 +11,12 @@ using BLL;
 
 namespace PLL
 {
-    public partial class Login : Form
+    public partial class UserForm : Form
     {
         BLL.Customer c = new Customer();
 
         
-        public Login()
+        public UserForm()
         {
             InitializeComponent();
         }
@@ -31,7 +31,6 @@ namespace PLL
             if (string.IsNullOrEmpty(getString))
             {
                 MessageBox.Show("Invalid!");
-
             }
             else if (getString == "Customer")
             {
@@ -40,14 +39,14 @@ namespace PLL
                 var nf = new Modules(getString);
                 nf.Show();
                 this.Hide();
-                MessageBox.Show(user.Username);
+                
             }
             else if (getString == "Manager")
             {
                 var nf = new Modules(getString);
                 nf.Show();
                 this.Hide();
-                MessageBox.Show("its Manager");
+                
             }
             else
             {
@@ -67,6 +66,16 @@ namespace PLL
         private void Login_Load(object sender, EventArgs e)
         {
             textBox2.PasswordChar = '*';
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+            var nf = new forgetpassword();
+            nf.Show();
+            this.Hide();
+           
+
         }
     }
 }

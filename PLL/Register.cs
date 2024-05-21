@@ -53,7 +53,7 @@ namespace PLL
         {
             timer1.Stop();
             MessageBox.Show("Success Brother");
-            var md = new Login();
+            var md = new UserForm();
             md.Show();
             this.Hide();
         }

@@ -28,6 +28,26 @@ namespace BLL
             return db.checkingPin(pin);
         }
 
+
+        public bool confirmUsername(string name)
+        {
+            return db.passUsernameForPassword(name);
+
+        }
+
+
+        public bool updatePass(string name,string pass)
+        {
+            if(confirmUsername(name))
+            {
+                return db.updatePassword(name, pass);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         
     }
 

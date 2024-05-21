@@ -12,7 +12,7 @@ namespace BLL
 
         public int getPin()
         {
-            //add validation logic if needed
+            //validation nh lagara sir isme sirf encaps ka concept lagake dikhara
             return pinNo;
         }
        
